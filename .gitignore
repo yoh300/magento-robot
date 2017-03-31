@@ -1,0 +1,6 @@
+.cache
+.mozilla
+.bash_history
+sample_tests/*html
+sample_tests/*xml
+sample_tests/*png

@@ -44,6 +44,9 @@ echo -e "Starting Xvfb on display ${DISPLAY} with res ${RES}"
 Xvfb ${DISPLAY} -ac -screen 0 ${RES} +extension RANDR &
 export DISPLAY=${DISPLAY}
 
+# Import database
+mysql -uroot -punknown < /var/www/html/alldatabase.sql
+
 # Execute tests
 echo -e "Executing robot tests at log level ${LOG_LEVEL}"
 

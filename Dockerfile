@@ -21,4 +21,5 @@ RUN wget -N https://chromedriver.storage.googleapis.com/2.26/chromedriver_linux6
     ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 ADD run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
+RUN a2enmod headers
 CMD ["run.sh"]

@@ -41,7 +41,7 @@ fi
 
 # Start Xvfb
 echo -e "Starting Xvfb on display ${DISPLAY} with res ${RES}"
-Xvfb ${DISPLAY} -ac -screen 0 ${RES} +extension RANDR &
+Xvfb ${DISPLAY} -ac -screen 0 ${RES} +extension RANDR >/var/www/html/xvfb.log 2>&1 &
 export DISPLAY=${DISPLAY}
 
 # Import database

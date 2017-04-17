@@ -9,10 +9,12 @@ ENV TIMEZONE Asia/Bangkok
 
 # Install Python Pip and the Robot framework
 RUN apt-get update && \
-    apt-get install -y python-pip xvfb unzip udev libgconf2-4 chromium-browser firefox=28.0+build2-0ubuntu2 xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic && \
-    pip install --upgrade pip && \
-    pip install robotframework robotframework-selenium2library selenium==2.53.6 robotframework-xvfb && \
-    python --version
+    apt-get install -y python-pip xvfb unzip udev libgconf2-4 chromium-browser firefox=28.0+build2-0ubuntu2 xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
+RUN pip install --upgrade pip && \
+    pip install robotframework robotframework-selenium2library selenium==2.53.6 robotframework-xvfb
+RUN pip install openpyxl Pillow pydrive
+RUN git clone http://watcharac:passw0rd@code.stream.co.th/ecommerce/robot2docs.git /robot2docs
+RUN python --version
 RUN wget -N https://chromedriver.storage.googleapis.com/2.26/chromedriver_linux64.zip && \
     unzip chromedriver_linux64.zip -d /usr/local/share/ && \
     rm chromedriver_linux64.zip && \
@@ -22,4 +24,5 @@ RUN wget -N https://chromedriver.storage.googleapis.com/2.26/chromedriver_linux6
 ADD run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 RUN a2enmod headers
+
 CMD ["run.sh"]

@@ -26,6 +26,7 @@ DEFAULT_RES="1280x1024x24"
 DEFAULT_DISPLAY=":99"
 DEFAULT_ROBOT_TESTS="/test/"
 DEFAULT_ROBOT_PARAM=""
+DEFAULT_GDRIVE="false"
 
 # Use default if none specified as env var
 LOG_LEVEL=${LOG_LEVEL:-$DEFAULT_LOG_LEVEL}
@@ -33,6 +34,7 @@ RES=${RES:-$DEFAULT_RES}
 DISPLAY=${DISPLAY:-$DEFAULT_DISPLAY}
 ROBOT_TESTS=${ROBOT_TESTS:-$DEFAULT_ROBOT_TESTS}
 ROBOT_PARAM=${ROBOT_TESTS:-$DEFAULT_ROBOT_PARAM}
+GDRIVE=${GDRIVE:-$DEFAULT_GDRIVE}
 
 if [[ "${ROBOT_TESTS}" == "false" ]]; then
   echo "Error: Please specify the robot test or directory as env var ROBOT_TESTS"
@@ -56,3 +58,11 @@ pybot --loglevel ${LOG_LEVEL} --outputdir ${ROBOT_TESTS} ${ROBOT_TESTS}
 # Stop Xvfb
 kill -9 $(pgrep Xvfb)
 echo "End Robot"
+
+if [[ "${GDRIVE}" == "false" ]]; then
+  echo "Warning: Do not specific google drive id, do not upload."
+  exit 0
+fi
+echo "Start convert result to excel and upload"
+python /robot2docs/robot2excel.py ${ROBOT_TESTS} ${GDRIVE}
+

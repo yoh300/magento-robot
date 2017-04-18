@@ -57,12 +57,11 @@ pybot --loglevel ${LOG_LEVEL} --outputdir ${ROBOT_TESTS} ${ROBOT_TESTS}
 
 # Stop Xvfb
 kill -9 $(pgrep Xvfb)
-echo "End Robot"
+echo -e "End Robot"
 
 if [[ "${GDRIVE}" == "false" ]]; then
-  echo "Warning: Do not specific google drive id, do not upload."
+  echo -e "Warning: Do not specific google drive id, do not upload."
   exit 0
 fi
-echo "Start convert result to excel and upload"
+echo -e "Start convert result to excel and upload"
 python /robot2docs/robot2excel.py ${ROBOT_TESTS} ${GDRIVE}
-

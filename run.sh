@@ -47,7 +47,7 @@ Xvfb ${DISPLAY} -ac -screen 0 ${RES} +extension RANDR >/var/www/html/xvfb.log 2>
 export DISPLAY=${DISPLAY}
 
 # Import database
-mysql -uroot -punknown -e 'CREATE DATABASE IF NOT EXISTS jenbunjerd-uat;'
+mysql -uroot -punknown -e "CREATE DATABASE IF NOT EXISTS jenbunjerd\-uat;"
 mysql -uroot -punknown jenbunjerd-uat < /var/www/html/alldatabase.sql
 
 # Execute tests

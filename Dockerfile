@@ -24,5 +24,5 @@ RUN wget -N https://chromedriver.storage.googleapis.com/2.26/chromedriver_linux6
 ADD run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 RUN a2enmod headers
-
+RUN apt-get install -y xfonts-thai xfonts-thai-etl xfonts-thai-manop xfonts-thai-nectec xfonts-thai-poonlap xfonts-thai-vor
 CMD ["run.sh"]

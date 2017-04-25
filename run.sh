@@ -48,7 +48,7 @@ export DISPLAY=${DISPLAY}
 
 # Import database
 mysql -uroot -punknown -e "CREATE DATABASE IF NOT EXISTS magento;"
-mysql -uroot -punknown jenbunjerd-uat < /var/www/html/alldatabase.sql
+mysql -uroot -punknown magento < /var/www/html/alldatabase.sql
 
 # Execute tests
 echo -e "Executing robot tests at log level ${LOG_LEVEL}"

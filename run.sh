@@ -52,12 +52,8 @@ mysql -uroot -punknown magento < /var/www/html/alldatabase.sql
 
 # Execute tests
 echo -e "Executing robot tests at log level ${LOG_LEVEL}"
-
 pybot --loglevel ${LOG_LEVEL} --outputdir ${ROBOT_TESTS} ${ROBOT_TESTS}
 #pybot --loglevel ${LOG_LEVEL} ${ROBOT_TESTS}
-
-# Stop Xvfb
-kill -9 $(pgrep Xvfb)
 echo -e "End Robot"
 
 if [[ "${GDRIVE}" == "false" ]]; then
@@ -66,3 +62,6 @@ if [[ "${GDRIVE}" == "false" ]]; then
 fi
 echo -e "Start convert result to excel and upload"
 python /robot2docs/robot2excel.py ${ROBOT_TESTS} ${GDRIVE}
+
+echo -e "Stop Xvfb"
+kill -9 $(pgrep Xvfb)

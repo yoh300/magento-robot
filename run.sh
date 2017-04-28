@@ -18,7 +18,7 @@ rm -rf /etc/supervisor/conf.d/supervisord-vsftpd.conf
 service apache2 start
 service mysql start
 # Entry script to start Xvfb and set display
-set -e
+# set -e
 echo "Start Robot"
 # Set the defaults
 DEFAULT_LOG_LEVEL="INFO" # Available levels: TRACE, DEBUG, INFO (default), WARN, NONE (no logging)
